@@ -1,8 +1,15 @@
 import { useState } from 'react';
 
-const Country = ({ country }) => {
+const Country = ({ country, addCountryToCountriesVisited }) => {
 
     const [checked, setChecked] = useState(false);
+
+    const moveCountry = (e) => {
+        setChecked(e.target.checked)
+        if (checked) {
+            addCountryToCountriesVisited(country)
+        }
+    }
 
     return (
         <>
@@ -15,7 +22,7 @@ const Country = ({ country }) => {
                     type="checkbox"
                     name="VisitedCheckbox"
                     value={checked}
-                    onChange={e => setChecked(e.target.checked)}
+                    onChange={e => moveCountry(e)}
                 />
             </label>
         </>

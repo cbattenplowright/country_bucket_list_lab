@@ -19,7 +19,10 @@ const CountriesContainer = () => {
         loadData();
     }, []);
 
-
+    const addCountryToCountriesVisited = (country) => {
+        const updatedCountries = [country, ...countriesVisited];
+        setCountriesVisited(updatedCountries);
+    }
 
     return (
         <>
@@ -27,7 +30,11 @@ const CountriesContainer = () => {
             <section className='country-lists'>
                 <div id='countries'>
                     <h2>Countries:</h2>
-                    {countries ? <CountriesList countries={countries} listName="Countries" /> : <p>loading data from API...</p>}
+                    {countries ? <CountriesList 
+                        countries={countries}
+                        listName="Countries"
+                        addCountryToCountriesVisited={addCountryToCountriesVisited}/> 
+                        : <p>loading data from API...</p>}
                 </div>
                 <div id='countries-visited'>
                     <h2>Countries Visited:</h2>
