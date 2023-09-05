@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-const Country = ({ country, addCountryToCountriesVisited, checked}) => {
-
+const Country = ({
+    country,
+    addCountryToCountriesVisited,
+    addCountryToCountries,
+    checked,
+}) => {
     const moveCountry = (e) => {
         if (!checked) {
-            addCountryToCountriesVisited(country)
+            addCountryToCountriesVisited(country);
+        } else if (checked) {
+            console.log("adding to countries");
+            addCountryToCountries(country);
         }
-    }
+    };
 
     return (
         <>
@@ -14,12 +21,12 @@ const Country = ({ country, addCountryToCountriesVisited, checked}) => {
             <p>Capital City: {country.capital}</p>
             <p>Population: {country.population}</p>
             <label>
-                Visited: 
+                Visited:
                 <input
                     type="checkbox"
                     name="VisitedCheckbox"
                     checked={checked}
-                    onChange={e => moveCountry(e)}
+                    onChange={(e) => moveCountry(e)}
                 />
             </label>
         </>
