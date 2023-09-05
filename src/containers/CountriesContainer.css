@@ -1,0 +1,9 @@
+.country-lists {
+    display: flex;
+    column-gap: 300px;
+    justify-content: center;
+}
+
+ul {
+    padding: 0;
+}
