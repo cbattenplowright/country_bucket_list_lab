@@ -19,9 +19,16 @@ const CountriesContainer = () => {
         loadData();
     }, []);
 
+    const removeCountryFromList = (countryName) => {
+        const updateCountries = countries.filter(country => country.name.common !== countryName)
+        console.log(updateCountries);
+        setCountries(updateCountries);
+    }
+
     const addCountryToCountriesVisited = (country) => {
         const updatedCountries = [country, ...countriesVisited];
         setCountriesVisited(updatedCountries);
+        removeCountryFromList(country.name.common)
     }
 
     return (

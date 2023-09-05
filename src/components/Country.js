@@ -6,7 +6,7 @@ const Country = ({ country, addCountryToCountriesVisited }) => {
 
     const moveCountry = (e) => {
         setChecked(e.target.checked)
-        if (checked) {
+        if (!checked) {
             addCountryToCountriesVisited(country)
         }
     }
