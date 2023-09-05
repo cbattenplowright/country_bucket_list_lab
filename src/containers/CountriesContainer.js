@@ -1,6 +1,7 @@
 import "./CountriesContainer.css";
 import { useState, useEffect } from "react";
 import CountriesList from "../components/CountriesList";
+import FilterForm from "../components/FilterForm";
 
 const CountriesContainer = () => {
     const [countries, setCountries] = useState(null);
@@ -16,6 +17,17 @@ const CountriesContainer = () => {
     useEffect(() => {
         loadData();
     }, []);
+
+    const filterCountries = (countryQuery) => {
+        console.log(countryQuery);
+        console.log(countries);
+        const filteredCountries = countries.filter((country) => {
+            return country.name.common
+                .toLowerCase()
+                .includes(countryQuery.toLowerCase());
+        });
+        setCountries(filteredCountries);
+    };
 
     const removeCountryFromCountries = (countryName) => {
         const updatedCountries = countries.filter(
@@ -48,6 +60,7 @@ const CountriesContainer = () => {
     return (
         <>
             <h1>Country Bucket List</h1>
+            <FilterForm filterCountries={filterCountries} />
             <section className="country-lists">
                 <div id="countries">
                     <h2>Countries:</h2>
