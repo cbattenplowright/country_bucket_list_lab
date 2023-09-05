@@ -39,13 +39,13 @@ const CountriesContainer = () => {
                     <h2>Countries:</h2>
                     {countries ? <CountriesList 
                         countries={countries}
-                        listName="Countries"
-                        addCountryToCountriesVisited={addCountryToCountriesVisited}/> 
+                        addCountryToCountriesVisited={addCountryToCountriesVisited}
+                        checked={false}/> 
                         : <p>loading data from API...</p>}
                 </div>
                 <div id='countries-visited'>
                     <h2>Countries Visited:</h2>
-                    <CountriesList countries={countriesVisited} listName="Countries Visited: " />
+                    <CountriesList countries={countriesVisited} checked={true} />
                 </div>
             </section>
         </>
